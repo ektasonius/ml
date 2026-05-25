@@ -23,3 +23,6 @@ spec:
         imagePullPolicy: Always
         command: [python]
         args: [ml_pipeline.py]
+        envFrom:
+          - secretRef:
+              name: hana-secret
