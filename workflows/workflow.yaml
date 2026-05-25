@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: mdq-training-pipeline
+  annotations:
+    scenarios.ai.sap.com/description: "MDQ Lead Time COO Training"
+    scenarios.ai.sap.com/name: "MDQ-Supplier-Quality-POC"
+    executables.ai.sap.com/description: "Train RF models"
+    executables.ai.sap.com/name: "mdq-training"
+  labels:
+    scenarios.ai.sap.com/id: "mdq-supplier-quality-poc"
+    executables.ai.sap.com/id: "mdq-training"
+    ai.sap.com/version: "1.0.0"
+spec:
+  entrypoint: mdq-training
+  templates:
+    - name: mdq-training
+      metadata:
+        labels:
+          ai.sap.com/resourcePlan: starter
+      container:
+        image: docker.io/ektasoni/mdq-ml-pipeline:v1
+        imagePullPolicy: Always
+        command: [python]
+        args: [ml_pipeline.py]
