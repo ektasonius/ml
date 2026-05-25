@@ -19,7 +19,7 @@ spec:
         labels:
           ai.sap.com/resourcePlan: starter
       container:
-        image: docker.io/ektasoni/mdq-ml-pipeline:v1
+        image: docker.io/ektasoni/mdq-ml-pipeline:v2
         imagePullPolicy: Always
         command: [python]
         args: [ml_pipeline.py]
